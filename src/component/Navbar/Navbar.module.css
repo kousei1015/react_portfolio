@@ -18,6 +18,16 @@
   font-size: 1.05rem;
 }
 
+.header_menu>li{
+  transition: .4s;
+}
+
+.header_menu>li:hover{
+  color: orange;
+  scale: 1.15;
+  transition: .4s;
+}
+
 @media (max-width: 770px) {
  .header_menu{
   gap: 2rem;

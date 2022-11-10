@@ -1,13 +1,16 @@
+h1 {
+  font-weight: 400;
+}
+h2{
+  font-weight: 400;
+  margin: 0rem;
+}
 .works{
   position: relative;
 }
 
 .works_heading {
   text-align: center;
-}
-
-.works_line {
-  border-bottom: 3px solid #000;
 }
 
 .works_blur_1 {
@@ -56,3 +59,8 @@
   left: 0%;
   top: 90%;
 }
+
+.works_text_color{
+  font-weight: 100;
+}
+

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./About.module.css";
 import Image from "../../images/undraw_dog_re_k4uk.svg";
 import Box from "@mui/material/Box";
@@ -11,30 +11,66 @@ import CssIcon from "../../images/317756_badge_css_css3_achievement_award_icon.s
 import DjangoIcon from "../../images/django-icon.svg";
 import ReactIcon from "../../images/react.svg";
 import ReduxIcon from "../../images/redux.svg";
-import Nabvar from "../Navbar/Navbar";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useAnimation } from "framer-motion";
 
 const About = () => {
+  const { ref, inView } = useInView({rootMargin: "-100px", triggerOnce: false});
+  const animation = useAnimation();
+
+  useEffect(() => {
+    if(inView){
+      console.log("True")
+      animation.start({
+        y:0,
+        opacity: 1,
+        transition: {
+          duration: 1
+        }
+      })
+    }
+    if(!inView){
+      animation.start({y: "10%", opacity: 0})
+    }
+  }, [inView]);
+
   return (
-    <div className={styles.about}>
-      <div className={styles.about_container}>
-      <div className={styles.about_blur_1}></div>
-      <div className={styles.about_blur_2}></div>
-      <div className={styles.about_blur_3}></div>
-      <div className={styles.about_blur_4}></div>
+    <div ref={ref} className={styles.about}>
+      <motion.div className={styles.about_container} animate={animation}>
+        <div className={styles.about_blur_1}></div>
+        <div className={styles.about_blur_2}></div>
+        <div className={styles.about_blur_3}></div>
+        <div className={styles.about_blur_4}></div>
         <img src={Image} alt="" className={styles.about_img} />
-        <h1 className={styles.about_heading}>
-          <span className={styles.about_line}>About</span>
-        </h1>
-        <h1 className={styles.about_me_text}>
+        <h1 className={styles.about_heading}>About</h1>
+        <motion.h1
+          className={styles.about_me_text}
+          animate={animation}
+          transition={{ duration: "1", delay: 0.2 }}
+        >
           大学3年生時に受けた講義でHTMLとCSSに触り、そこでプログラミングに興味を持つ。その後、PythonのフレームワークであるDjangoと、JavacriptのライブラリであるReact.jsを独学し、WEBアプリを開発、プログラミングにやりがいを感じるようになる。最近は、特にReact関連のライブラリとコーディングを勉強している。
-        </h1>
-      </div>
+        </motion.h1>
+      </motion.div>
       <h1 className={styles.about_skill}>Skill</h1>
       <div>
-        <Grid container alignItems="center" justifyContent="center" columns={8} spacing={1}>
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="center"
+          columns={8}
+          spacing={1}
+        >
           <Grid item xs={8} sm={2.7}>
             <Box display="flex" justifyContent="center" p={3}>
-              <Card sx={{width: 600, maxWidth: "100%"}}>
+              <Card
+                sx={{
+                  "&:hover": { scale: "1.1", transition: "0.5s" },
+                  width: 600,
+                  maxWidth: "100%",
+                  transition: "0.5s",
+                }}
+              >
                 <CardContent
                   sx={{
                     display: "flex",
@@ -47,14 +83,21 @@ const About = () => {
                     alt=""
                     className={styles.about_skill_logo}
                   />
-                  <Typography color="textSecondary" sx={{marginTop: "1rem"}}>HTML</Typography>
+                  <h1>HTML</h1>
                 </CardContent>
               </Card>
             </Box>
           </Grid>
           <Grid item xs={8} sm={2.7}>
             <Box display="flex" justifyContent="center" p={3}>
-              <Card sx={{width: 600, maxWidth: "100%"}}>
+              <Card
+                sx={{
+                  "&:hover": { scale: "1.1", transition: "0.5s" },
+                  width: 600,
+                  maxWidth: "100%",
+                  transition: "0.5s",
+                }}
+              >
                 <CardContent
                   sx={{
                     display: "flex",
@@ -67,14 +110,21 @@ const About = () => {
                     alt=""
                     className={styles.about_skill_logo}
                   />
-                  <Typography color="textSecondary" sx={{marginTop: "1rem"}}>CSS</Typography>
+                  <h1>CSS</h1>
                 </CardContent>
               </Card>
             </Box>
           </Grid>
           <Grid item xs={8} sm={2.7}>
             <Box display="flex" justifyContent="center" p={3}>
-              <Card sx={{ width: 600, maxWidth: "100%" }}>
+              <Card
+                sx={{
+                  "&:hover": { scale: "1.1", transition: "0.5s" },
+                  width: 600,
+                  maxWidth: "100%",
+                  transition: "0.5s",
+                }}
+              >
                 <CardContent
                   sx={{
                     display: "flex",
@@ -87,14 +137,21 @@ const About = () => {
                     alt=""
                     className={styles.about_skill_logo}
                   />
-                  <Typography color="textSecondary" sx={{marginTop: "1rem"}}>React</Typography>
+                  <h1>React</h1>
                 </CardContent>
               </Card>
             </Box>
           </Grid>
           <Grid item xs={8} sm={2.7}>
             <Box display="flex" justifyContent="center" p={3}>
-              <Card sx={{ width: 600, maxWidth: "100%" }}>
+              <Card
+                sx={{
+                  "&:hover": { scale: "1.1", transition: "0.5s" },
+                  width: 600,
+                  maxWidth: "100%",
+                  transition: "0.5s",
+                }}
+              >
                 <CardContent
                   sx={{
                     display: "flex",
@@ -107,14 +164,22 @@ const About = () => {
                     alt=""
                     className={styles.about_skill_logo}
                   />
-                  <Typography color="textSecondary" sx={{marginTop: "1rem"}}>Redux</Typography>
+
+                  <h1>Redux</h1>
                 </CardContent>
               </Card>
             </Box>
           </Grid>
           <Grid item xs={8} sm={2.7}>
             <Box display="flex" justifyContent="center" p={3}>
-              <Card sx={{ width: 600, maxWidth: "100%" }}>
+              <Card
+                sx={{
+                  "&:hover": { scale: "1.1", transition: "0.5s" },
+                  width: 600,
+                  maxWidth: "100%",
+                  transition: "0.5s",
+                }}
+              >
                 <CardContent
                   sx={{
                     display: "flex",
@@ -127,9 +192,7 @@ const About = () => {
                     alt=""
                     className={styles.about_skill_logo}
                   />
-                  <Typography color="textSecondary" sx={{marginTop: "1rem"}}>
-                    Django
-                  </Typography>
+                  <h1>Django Rest Framework</h1>
                 </CardContent>
               </Card>
             </Box>

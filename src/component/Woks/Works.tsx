@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./Works.module.css";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -9,24 +9,44 @@ import Typography from "@mui/material/Typography";
 import MapAppImage from "../../images/map-app.svg";
 import QuoteAppImage from "../../images/quote-post-app.svg";
 import PortfolioImage from "../../images/portfolio.svg";
+import { useInView } from "react-intersection-observer";
+import { useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Works = () => {
+  const { ref, inView } = useInView();
+  const animation = useAnimation();
+
+  useEffect(() => {
+    if(inView){
+      console.log("True")
+      animation.start({
+        y:0,
+        opacity: 1,
+        transition: {
+          duration: 1
+        }
+      })
+    }
+    if(!inView){
+      animation.start({y: "10%", opacity: 0})
+    }
+  }, [inView]);
   return (
-    <div className={styles.works}>
+    <div ref={ref} className={styles.works}>
       <div className={styles.works_blur_1}></div>
       <div className={styles.works_blur_2}></div>
       <div className={styles.works_blur_3}></div>
       <div className={styles.works_blur_4}></div>
-      <h1 className={styles.works_heading}>
-        <span className={styles.works_line}>Works</span>
-      </h1>
-      <div>
+      <h1 className={styles.works_heading}>Works</h1>
+      <motion.div animate={animation}>
         <Grid container alignItems="center" justifyContent="center">
-          <Grid item xs={12} sx={{marginBottom: "2rem"}}>
+          <Grid item xs={12} sx={{ marginBottom: "2rem" }}>
             <Box display="flex" justifyContent="center" p={0.5}>
-              <Card sx={{ width: 730, maxWidth: "100%" }}>
+              <Card sx={{"&:hover": { scale: "1.05", transition: "0.5s" }, width: 730, maxWidth: "100%", transiton: "0.5s" }}>
                 <CardContent
                   sx={{
+                    
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -39,16 +59,16 @@ const Works = () => {
                     component="img"
                     sx={{ margin: 2, objectFit: "fill" }}
                   />
-                  <Typography color="textSecondary" sx={{ marginTop: "1rem" }}>
+                  <h2>
                     名所紹介アプリ
-                  </Typography>
+                  </h2>
                 </CardContent>
               </Card>
             </Box>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} sx={{ marginBottom: "2rem" }}>
             <Box display="flex" justifyContent="center" p={0.5}>
-              <Card sx={{ width: 730, maxWidth: "100%" }}>
+              <Card sx={{"&:hover": { scale: "1.05", transition: "0.5s" }, width: 730, maxWidth: "100%", transition: "0.5s" }}>
                 <CardContent
                   sx={{
                     display: "flex",
@@ -66,16 +86,16 @@ const Works = () => {
                       "@media screen and (max-width:900px)": { height: 200 },
                     }}
                   />
-                  <Typography color="textSecondary" sx={{ marginTop: "1rem" }}>
+                  <h2>
                     名言投稿アプリ（開発中）
-                  </Typography>
+                  </h2>
                 </CardContent>
               </Card>
             </Box>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} sx={{ marginBottom: "2rem" }}>
             <Box display="flex" justifyContent="center" p={0.5}>
-              <Card sx={{ width: 730, maxWidth: "100%" }}>
+              <Card sx={{"&:hover": { scale: "1.05", transition: "0.5s" }, width: 730, maxWidth: "100%", transition: "0.5s" }}>
                 <CardContent
                   sx={{
                     display: "flex",
@@ -87,17 +107,18 @@ const Works = () => {
                     title=""
                     image={PortfolioImage}
                     component="img"
-                    sx={{ margin: 2, objectFit: "fill" }}
+                    sx={{ margin: 2}}
+
                   />
-                  <Typography color="textSecondary" sx={{ marginTop: "1rem" }}>
+                  <h2>
                     ポートフォリオサイト
-                  </Typography>
+                  </h2>
                 </CardContent>
               </Card>
             </Box>
           </Grid>
         </Grid>
-      </div>
+      </motion.div>
     </div>
   );
 };

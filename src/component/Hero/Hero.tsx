@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Hero.module.css";
 import backImage from "../../images/bg1-1.svg";
 import Nabvar from "../Navbar/Navbar";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -12,12 +13,17 @@ const Hero = () => {
         <div className={styles.hero_blur_2}></div>
         <div className={styles.hero_blur_3}></div>
         <div className={styles.hero_left}>
-          <div className={styles.hero_text_container}>
+          <motion.div
+            className={styles.hero_text_container}
+            initial={{ x: "-40%", opacity: "0" }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{duration: "1", delay: 0.2}}
+          >
             <h1 className={styles.hero_text}>
               Hi, I'm <span>Kosei</span>
             </h1>
             <h1 className={styles.hero_text}>Welcome to My Portfolio</h1>
-          </div>
+          </motion.div>
         </div>
         <div className={styles.hero_right}>
           <img src={backImage} alt="" className={styles.hero_img} />

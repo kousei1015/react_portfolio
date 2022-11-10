@@ -1,3 +1,6 @@
+h1{
+  font-weight: 400;
+}
 .about {
   text-align: center;
   position: relative;
@@ -61,10 +64,6 @@
   border: 1px solid gray;
 }
 
-.about_line {
-  border-bottom: 3px solid #000;
-}
-
 .about_me_text {
   font-size: 1.2rem;
   font-weight: normal;
@@ -83,6 +82,8 @@
   width: 10rem;
   height: 10rem;
 }
+
+
 
 @media (max-width: 700px) {
   .about {

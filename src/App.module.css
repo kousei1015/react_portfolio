@@ -8,6 +8,10 @@
 
 @media (max-width: 600px) {
   .theme {
-    padding: 2rem 0.7rem;
+    padding: 2rem 1.2rem;
   }
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
