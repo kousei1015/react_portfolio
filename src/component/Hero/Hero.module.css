@@ -38,45 +38,13 @@
   color: orange;
 }
 
-.hero_blur_1 {
-  background-color: aqua;
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(20px);
-  z-index: -9;
-  width: 6rem;
-  height: 6rem;
-  left: 8%;
-  top: 35%;
-}
 
-.hero_blur_2 {
-  background-color: orangered;
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(20px);
-  z-index: -9;
-  width: 8rem;
-  height: 8rem;
-  left: 40%;
-}
-
-.hero_blur_3 {
-  background-color: greenyellow;
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(25px);
-  z-index: -9;
-  width: 8rem;
-  height: 8rem;
-  left: 22%;
-  top: 10%;
-}
 
 @media (max-width: 900px) {
   .hero {
     display: flex;
     flex-direction: column;
+    z-index: -9;
   }
   .hero_left{
     position: initial;

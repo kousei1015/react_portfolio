@@ -11,7 +11,18 @@
     padding: 2rem 1.2rem;
   }
 }
-
+h1 {
+  font-weight: 400;
+}
+h2{
+  font-weight: 400;
+  margin: 0rem;
+  font-size: 1.1rem;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
 ::-webkit-scrollbar {
   display: none;
 }

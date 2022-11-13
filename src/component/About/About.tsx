@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import styles from "./About.module.css";
-import Image from "../../images/undraw_dog_re_k4uk.svg";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
+import ProfileIcon from "../../images/undraw_dog_re_k4uk.svg";
 import HTMLIcon from "../../images/317755_badge_html_html5_achievement_award_icon.svg";
-import CssIcon from "../../images/317756_badge_css_css3_achievement_award_icon.svg";
+import CSSIcon from "../../images/317756_badge_css_css3_achievement_award_icon.svg";
 import DjangoIcon from "../../images/django-icon.svg";
 import ReactIcon from "../../images/react.svg";
 import ReduxIcon from "../../images/redux.svg";
@@ -16,44 +15,42 @@ import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
 
 const About = () => {
-  const { ref, inView } = useInView({rootMargin: "-100px", triggerOnce: false});
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
   const animation = useAnimation();
 
   useEffect(() => {
-    if(inView){
-      console.log("True")
+    if (inView) {
       animation.start({
-        y:0,
+        y: 0,
         opacity: 1,
         transition: {
-          duration: 1
-        }
-      })
+          duration: 1,
+        },
+      });
     }
-    if(!inView){
-      animation.start({y: "10%", opacity: 0})
+    if (!inView) {
+      animation.start({ y: "10%", opacity: 0 });
     }
   }, [inView]);
 
   return (
-    <div ref={ref} className={styles.about}>
-      <motion.div className={styles.about_container} animate={animation}>
-        <div className={styles.about_blur_1}></div>
-        <div className={styles.about_blur_2}></div>
-        <div className={styles.about_blur_3}></div>
-        <div className={styles.about_blur_4}></div>
-        <img src={Image} alt="" className={styles.about_img} />
+    <div className={styles.about} id="about">
+      <div className={styles.about_blur_1}></div>
+      <div className={styles.about_blur_2}></div>
+      <div className={styles.about_blur_3}></div>
+      <div className={styles.about_container}>
+        <img src={ProfileIcon} alt="" className={styles.about_img} />
         <h1 className={styles.about_heading}>About</h1>
-        <motion.h1
+        <h1
           className={styles.about_me_text}
-          animate={animation}
-          transition={{ duration: "1", delay: 0.2 }}
         >
-          大学3年生時に受けた講義でHTMLとCSSに触り、そこでプログラミングに興味を持つ。その後、PythonのフレームワークであるDjangoと、JavacriptのライブラリであるReact.jsを独学し、WEBアプリを開発、プログラミングにやりがいを感じるようになる。最近は、特にReact関連のライブラリとコーディングを勉強している。
-        </motion.h1>
-      </motion.div>
+          大学3年生時に受けた講義でHTMLとCSSに触り、そこでプログラミングに興味を持つ。その後、PythonのフレームワークであるDjangoと、JavacriptのライブラリであるReact.jsを独学し、WEBアプリを開発、プログラミングにやりがいを感じました。最近はReact、Typescriptなど、主にフロントエンドの方を勉強しています。
+        </h1>
+      </div>
       <h1 className={styles.about_skill}>Skill</h1>
-      <div>
+      <motion.div ref={ref} animate={animation}>
         <Grid
           container
           alignItems="center"
@@ -106,7 +103,7 @@ const About = () => {
                   }}
                 >
                   <img
-                    src={CssIcon}
+                    src={CSSIcon}
                     alt=""
                     className={styles.about_skill_logo}
                   />
@@ -198,7 +195,7 @@ const About = () => {
             </Box>
           </Grid>
         </Grid>
-      </div>
+      </motion.div>
     </div>
   );
 };

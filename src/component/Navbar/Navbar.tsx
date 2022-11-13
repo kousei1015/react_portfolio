@@ -1,23 +1,26 @@
 import React from "react";
 import styles from "./Navbar.module.css";
-import Logo from "../../images/github-icon.svg";
-import { motion } from "framer-motion";
+import ProfileIcon from "../../images/undraw_dog_re_k4uk.svg";
+import { Link } from "react-scroll";
+
 
 const Nabvar = () => {
   return (
-    <motion.div
-      className={styles.header}
-      initial={{ y: "-40%", opacity: "0" }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: "1", delay: 0.2 }}
-    >
-      <img src={Logo} alt="" className={styles.header_img} />
+    <div className={styles.header} id="nav">
+      <img src={ProfileIcon} alt="" />
       <ul className={styles.header_menu}>
-        <li>Home</li>
-        <li>About</li>
-        <li>Works</li>
+        <Link to="nav" spy={true} smooth={true} offset={-100} duration={500}>
+          Home
+        </Link>
+        <Link to="about" spy={true} smooth={true} duration={500}>
+          About
+        </Link>
+        <Link to="works" spy={true} smooth={true} duration={500}>
+          Works
+        </Link>
+        <a href="https://github.com/kousei1015/">Github</a>
       </ul>
-    </motion.div>
+    </div>
   );
 };
 

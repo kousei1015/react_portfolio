@@ -6,12 +6,10 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <div className={styles.hero_container}>
+    <div className={styles.hero_container} id="hero">
       <Nabvar />
       <div className={styles.hero}>
-        <div className={styles.hero_blur_1}></div>
-        <div className={styles.hero_blur_2}></div>
-        <div className={styles.hero_blur_3}></div>
+        
         <div className={styles.hero_left}>
           <motion.div
             className={styles.hero_text_container}

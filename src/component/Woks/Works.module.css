@@ -1,10 +1,4 @@
-h1 {
-  font-weight: 400;
-}
-h2{
-  font-weight: 400;
-  margin: 0rem;
-}
+
 .works{
   position: relative;
 }
@@ -63,4 +57,6 @@ h2{
 .works_text_color{
   font-weight: 100;
 }
+
+
 
